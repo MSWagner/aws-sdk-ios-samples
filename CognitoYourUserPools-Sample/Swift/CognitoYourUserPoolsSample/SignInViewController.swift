@@ -18,11 +18,18 @@
 import Foundation
 import AWSCognitoIdentityProvider
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>?
     var usernameText: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.username.delegate = self
+        self.password.delegate = self
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +49,11 @@ class SignInViewController: UIViewController {
             let retryAction = UIAlertAction(title: "Retry", style: .default, handler: nil)
             alertController.addAction(retryAction)
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 

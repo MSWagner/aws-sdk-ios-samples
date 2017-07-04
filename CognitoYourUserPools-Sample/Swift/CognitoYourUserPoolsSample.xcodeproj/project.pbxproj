@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					17FC2F7B1E258FC500174015 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = T3TBY9W4TM;
 						LastSwiftMigration = 0820;
 					};
 				};
@@ -211,7 +212,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9214D2BD8818DE69A24072DD /* [CP] Copy Pods Resources */ = {
@@ -381,7 +382,9 @@
 			baseConfigurationReference = DBEB9BB4F88788184F7DD583 /* Pods-CognitoYourUserPoolsSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T3TBY9W4TM;
 				INFOPLIST_FILE = CognitoYourUserPoolsSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.CognitoYourUserPoolsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -394,7 +397,9 @@
 			baseConfigurationReference = 2D8C9B52DE415302BA7B152A /* Pods-CognitoYourUserPoolsSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T3TBY9W4TM;
 				INFOPLIST_FILE = CognitoYourUserPoolsSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.amazonaws.CognitoYourUserPoolsSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

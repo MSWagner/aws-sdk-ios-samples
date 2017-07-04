@@ -18,7 +18,7 @@
 import Foundation
 import AWSCognitoIdentityProvider
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var pool: AWSCognitoIdentityUserPool?
     var sentTo: String?
@@ -31,6 +31,8 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.username.delegate = self
+        self.password.delegate = self
         self.pool = AWSCognitoIdentityUserPool.init(forKey: AWSCognitoUserPoolsSignInProviderKey)
     }
     
@@ -102,5 +104,10 @@ class SignUpViewController: UIViewController {
             })
             return nil
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
